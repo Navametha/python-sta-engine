@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-sta-engine"
+version = "0.1.0"
+description = "Educational combinational static timing analyzer with NLDM interpolation"
+requires-python = ">=3.10"
+authors = [{name = "Navametha Ramkumar"}]
+readme = "README.md"
+license = {text = "MIT"}
+
+[project.scripts]
+python-sta = "sta_engine.cli:main"
+python-sta-isc = "sta_engine.course_cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
