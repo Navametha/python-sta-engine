@@ -1,0 +1,67 @@
+{
+  "inputs": [
+    "a",
+    "b",
+    "c"
+  ],
+  "instances": [
+    {
+      "name": "U1",
+      "cell": "NAND2_X1",
+      "inputs": {
+        "A": "a",
+        "B": "b"
+      },
+      "output": "n1"
+    },
+    {
+      "name": "U2",
+      "cell": "INV_X1",
+      "inputs": {
+        "A": "n1"
+      },
+      "output": "n2"
+    },
+    {
+      "name": "U3",
+      "cell": "BUF_X1",
+      "inputs": {
+        "A": "n2"
+      },
+      "output": "y"
+    },
+    {
+      "name": "U4",
+      "cell": "NAND2_X1",
+      "inputs": {
+        "A": "b",
+        "B": "c"
+      },
+      "output": "z"
+    }
+  ],
+  "outputs": [
+    "y",
+    "z"
+  ],
+  "constraints": {
+    "input_arrival_ns": {
+      "a": 0.02,
+      "b": 0.02,
+      "c": 0.015
+    },
+    "input_slew_ns": {
+      "a": 0.04,
+      "b": 0.05,
+      "c": 0.03
+    },
+    "output_required_ns": {
+      "y": 0.11,
+      "z": 0.06
+    },
+    "output_load_pf": {
+      "y": 0.04,
+      "z": 0.02
+    }
+  }
+}
