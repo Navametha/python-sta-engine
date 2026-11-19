@@ -1,0 +1,71 @@
+{
+  "origin": "Derived results only; neither the university library nor benchmark source is bundled",
+  "mode": "course_isc_combinational_max_delay",
+  "benchmark_results": [
+    {
+      "benchmark": "c17",
+      "input_type": "ISCAS .isc from user-supplied course benchmark archive",
+      "library_type": "user-supplied simplified 45nm NLDM_lib_max2Inp",
+      "pi_slew_ps": 2,
+      "required_time_policy": "1.1 x computed circuit delay",
+      "combinational_gates": 6,
+      "dff_boundaries": 0,
+      "endpoints": 2,
+      "circuit_delay_ps": 62.501403,
+      "critical_path_gate_count": 3,
+      "note": "Computed by the educational model; not independently verified against reference STA."
+    },
+    {
+      "benchmark": "c1908",
+      "input_type": "ISCAS .isc from user-supplied course benchmark archive",
+      "library_type": "user-supplied simplified 45nm NLDM_lib_max2Inp",
+      "pi_slew_ps": 2,
+      "required_time_policy": "1.1 x computed circuit delay",
+      "combinational_gates": 880,
+      "dff_boundaries": 0,
+      "endpoints": 25,
+      "circuit_delay_ps": 1012.285407,
+      "critical_path_gate_count": 40,
+      "note": "Computed by the educational model; not independently verified against reference STA."
+    },
+    {
+      "benchmark": "c7552",
+      "input_type": "ISCAS .isc from user-supplied course benchmark archive",
+      "library_type": "user-supplied simplified 45nm NLDM_lib_max2Inp",
+      "pi_slew_ps": 2,
+      "required_time_policy": "1.1 x computed circuit delay",
+      "combinational_gates": 3512,
+      "dff_boundaries": 0,
+      "endpoints": 108,
+      "circuit_delay_ps": 868.303862,
+      "critical_path_gate_count": 43,
+      "note": "Computed by the educational model; not independently verified against reference STA."
+    },
+    {
+      "benchmark": "b15_1",
+      "input_type": "ISCAS .isc from user-supplied course benchmark archive",
+      "library_type": "user-supplied simplified 45nm NLDM_lib_max2Inp",
+      "pi_slew_ps": 2,
+      "required_time_policy": "1.1 x computed circuit delay",
+      "combinational_gates": 12543,
+      "dff_boundaries": 449,
+      "endpoints": 519,
+      "circuit_delay_ps": 1749.591492,
+      "critical_path_gate_count": 45,
+      "note": "Computed by the educational model; not independently verified against reference STA."
+    },
+    {
+      "benchmark": "b19_1",
+      "input_type": "ISCAS .isc from user-supplied course benchmark archive",
+      "library_type": "user-supplied simplified 45nm NLDM_lib_max2Inp",
+      "pi_slew_ps": 2,
+      "required_time_policy": "1.1 x computed circuit delay",
+      "combinational_gates": 212728,
+      "dff_boundaries": 6642,
+      "endpoints": 6669,
+      "circuit_delay_ps": 3625.912489,
+      "critical_path_gate_count": 160,
+      "note": "Computed by the educational model; not independently verified against reference STA."
+    }
+  ]
+}
