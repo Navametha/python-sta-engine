@@ -78,17 +78,6 @@ This is a deliberately bounded **combinational max-delay analysis**. The parser 
 
 Planned extensions: Liberty unit normalization, additional timing checks, read_verilog/read_sdc, sequential cell modeling, RC delay and comparison with OpenSTA on a public benchmark.
 
-## Resume relevance
-
-Demonstrates timing graph traversal, pin load computation, NLDM interpolation, late rise/fall propagation, and critical path reconstruction. Built from scratch as an independent public portfolio implementation; **not uploaded or extracted from employer tooling or course submissions**.
-
-## License
-
-MIT. See `LICENSE`.
-
-## ISCAS coursework-compatible mode (optional)
-
-An **independently implemented** second mode follows the *simplified* EE5301 PA1 timing assumptions. It parses numbered `.isc` circuits, plus a `NLDM_lib_max2Inp`-style educational library (cell-level `capacitance`, `cell_delay`, `output_slew` rather than full pin timing arcs). It is distinct from the pin-level Liberty/JSON analyzer above.
 
 ```bash
 # Run with your own locally available copies of the course inputs:
@@ -102,16 +91,15 @@ python -m sta_engine.course_cli \
   --required-ps 50 --input-slew-ps 2 --out results/c17_fixed.json
 ```
 
-**Course model:** PI arrival = 0 ps; input slew = 2 ps; no wire capacitance; each gate's input capacitance contributes to each driving node's load; an endpoint has external load of four inverter input capacitances. The 7×7 NLDM tables use ns for delay/slew and fF for capacitance. n-input gate delay and slew are scaled by `n/2` only when n > 2. The analyzer traverses forward to calculate maximum arrivals and slews, traverses backward to calculate each gate's required time and slack, and follows the arrival-maximizing predecessor to recover a longest path. DFF nodes are split into pseudo primary inputs/outputs; clock/setup/hold arcs are **not** timed.
+**Model:** PI arrival = 0 ps; input slew = 2 ps; no wire capacitance; each gate's input capacitance contributes to each driving node's load; an endpoint has external load of four inverter input capacitances. The 7×7 NLDM tables use ns for delay/slew and fF for capacitance. n-input gate delay and slew are scaled by `n/2` only when n > 2. The analyzer traverses forward to calculate maximum arrivals and slews, traverses backward to calculate each gate's required time and slack, and follows the arrival-maximizing predecessor to recover a longest path. DFF nodes are split into pseudo primary inputs/outputs; clock/setup/hold arcs are **not** timed.
 
 By default, endpoint required time is **1.1× the worst circuit delay**, exactly as in the teaching model. This **guarantees nonnegative endpoint slacks**, so WNS and TNS are zero under the default policy; it is *not* evidence of timing closure against a fixed clock. Use `--required-ps` to impose a fixed output budget. The exported CSV, text report or JSON can be fed to the companion `sta-regression-analyzer` project.
 
-No instructor-provided code, classroom Liberty data, benchmark archives, or proprietary PDK content is redistributed in this repository. The user's local `.isc` benchmarks and course library were used for validation, with their sources kept out of version control. Built-in unit-test fixtures are independently constructed.
 
 **Caveat:** Some benchmark cells (e.g., DFF) are abstracted into boundary nodes. Rise/fall, clock propagation, hold, interconnect parasitics, input pin-specific arcs, and real sequential timing checks are not modeled in this course mode. Timing results are model-specific; do not compare them directly to signoff STA.
 
 
-### Verification against uploaded course inputs
+### Verification 
 
 The independent course-mode implementation was executed locally on the user's supplied simplified library and ISCAS netlist archive. Only derived numeric results are committed; raw course materials are **not** included. Values are outputs of the educational engine, **not independently verified golden values or signoff results**.
 
@@ -123,6 +111,6 @@ The independent course-mode implementation was executed locally on the user's su
 | b15_1 | 12,543 | 449 | 519 | 1,749.591 ps |
 | b19_1 | 212,728 | 6,642 | 6,669 | 3,625.913 ps |
 
-Details: [`examples/course_validation_summary.json`](examples/course_validation_summary.json).
+
 
 The b19_1 benchmark includes repeated declarations of one output; repeated output declarations are deduplicated for endpoint analysis. The engine successfully completed this benchmark run on the test machine, but broader memory/runtime benchmarking is still warranted. The class requirement was a scalable implementation, not a clock-constrained silicon signoff.
