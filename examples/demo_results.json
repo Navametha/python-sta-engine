@@ -1,0 +1,81 @@
+{
+  "analysis": "combinational_max_delay",
+  "units": {
+    "time": "ns",
+    "capacitance": "pF"
+  },
+  "metrics": {
+    "wns_ns": -0.017064,
+    "tns_ns": -0.026883,
+    "violating_endpoints": 2,
+    "endpoints_analyzed": 2
+  },
+  "endpoints": [
+    {
+      "endpoint": "y",
+      "arrival_ns": 0.127064,
+      "rise_arrival_ns": 0.12312,
+      "fall_arrival_ns": 0.127064,
+      "required_ns": 0.11,
+      "slack_ns": -0.017064,
+      "worst_transition": "fall",
+      "critical_path": [
+        {
+          "net": "b",
+          "transition": "fall",
+          "arrival_ns": 0.02,
+          "source": "primary_input"
+        },
+        {
+          "net": "n1",
+          "transition": "rise",
+          "arrival_ns": 0.06275,
+          "cell_instance": "U1",
+          "related_pin": "B",
+          "cell_delay_ns": 0.04275
+        },
+        {
+          "net": "n2",
+          "transition": "fall",
+          "arrival_ns": 0.095519,
+          "cell_instance": "U2",
+          "related_pin": "A",
+          "cell_delay_ns": 0.032769
+        },
+        {
+          "net": "y",
+          "transition": "fall",
+          "arrival_ns": 0.127064,
+          "cell_instance": "U3",
+          "related_pin": "A",
+          "cell_delay_ns": 0.031545
+        }
+      ]
+    },
+    {
+      "endpoint": "z",
+      "arrival_ns": 0.069819,
+      "rise_arrival_ns": 0.065819,
+      "fall_arrival_ns": 0.069819,
+      "required_ns": 0.06,
+      "slack_ns": -0.009819,
+      "worst_transition": "fall",
+      "critical_path": [
+        {
+          "net": "b",
+          "transition": "rise",
+          "arrival_ns": 0.02,
+          "source": "primary_input"
+        },
+        {
+          "net": "z",
+          "transition": "fall",
+          "arrival_ns": 0.069819,
+          "cell_instance": "U4",
+          "related_pin": "A",
+          "cell_delay_ns": 0.049819
+        }
+      ]
+    }
+  ]
+}
